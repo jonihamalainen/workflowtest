@@ -10,6 +10,15 @@ repositories {
     mavenLocal()
 }
 
+
+sonarqube {
+  properties {
+    property ("sonar.projectKey", "jonihamalainen_workflowtest")
+    property ("sonar.organization", "jonihamalainen")
+    property ("sonar.host.url", "https://sonarcloud.io")
+  }
+}
+
 val quarkusPlatformGroupId: String by project
 val quarkusPlatformArtifactId: String by project
 val quarkusPlatformVersion: String by project
