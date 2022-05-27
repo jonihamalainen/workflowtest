@@ -12,11 +12,32 @@ repositories {
 
 
 sonarqube {
-  properties {
-    property ("sonar.projectKey", "jonihamalainen_workflowtest")
-    property ("sonar.organization", "jonihamalainen")
-    property ("sonar.host.url", "https://sonarcloud.io")
-  }
+    properties {
+        property("sonar.host.url", "http://localhost:9000")
+        property("sonar.sources", "src/main/")
+        property("sonar.tests", "src/test/")
+        property("sonar.exclusions", "src/generated/")
+        property("sonar.coverage.jacoco.xmlReportPaths", "build/jacoco/test/jacocoTestReport.xml")
+        property("sonar.junit.reportsPath","build/test-results/test")
+        property("sonar.core.codeCoveragePlugin","jacoco")
+        property("sonar.verbose", "true")
+        property("sonar.binaries" ,"build/classes/kotlin")
+        property("sonar.java.binaries" ,"build/classes/java, build/classes/kotlin")
+        property("sonar.dynamicAnalysis", "reuseReports")
+    }
+}
+
+jacoco {
+    toolVersion = "0.7.9"
+    reportsDir = file("${project.projectDir}/build/reports")
+}
+
+tasks.named("sonarqube") {
+    dependsOn(tasks.named("jacocoTestReport"))
+}
+
+reports {
+    xml.isEnabled = true
 }
 
 val quarkusPlatformGroupId: String by project
