@@ -2,19 +2,13 @@ plugins {
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.allopen") version "1.6.21"
     id("io.quarkus")
-    id("org.sonarqube") version "3.3"
+     id("org.jetbrains.kotlinx.kover") version "0.4.2"
 }
 
 repositories {
     mavenCentral()
     mavenLocal()
 }
-
-sonarqube {
-        properties {
-            property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/coverageReport/coverageReport.xml")
-        }
-} 
 
 
 val quarkusPlatformGroupId: String by project
@@ -51,4 +45,3 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.javaParameters = true
 }
 
-project.tasks["sonarqube"].dependsOn "anotherTask"
