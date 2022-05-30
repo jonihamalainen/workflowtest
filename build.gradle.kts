@@ -10,6 +10,12 @@ repositories {
     mavenLocal()
 }
 
+sonarqube {
+    properties {
+        property ("sonar.sourceEncoding", "UTF-8")
+    }
+}
+
 
 val quarkusPlatformGroupId: String by project
 val quarkusPlatformArtifactId: String by project
@@ -44,3 +50,5 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
     kotlinOptions.javaParameters = true
 }
+
+project.tasks["sonarqube"].dependsOn "anotherTask"
