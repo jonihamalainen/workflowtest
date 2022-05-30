@@ -11,10 +11,10 @@ repositories {
 }
 
 sonarqube {
-    properties {
-        property ("sonar.sourceEncoding", "UTF-8")
-    }
-}
+        properties {
+            property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/coverageReport/coverageReport.xml")
+        }
+} 
 
 
 val quarkusPlatformGroupId: String by project
