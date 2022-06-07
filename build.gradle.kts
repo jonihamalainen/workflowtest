@@ -2,7 +2,8 @@ plugins {
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.allopen") version "1.6.21"
     id("io.quarkus")
-     id("org.jetbrains.kotlinx.kover") version "0.4.2"
+    jacoco
+    id("com.github.nbaztec.coveralls-jacoco") version "1.2.14"
 }
 
 repositories {
@@ -21,8 +22,7 @@ dependencies {
     implementation("io.quarkus:quarkus-resteasy-reactive-jackson")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("io.quarkus:quarkus-arc")
-    implementation("io.quarkus:quarkus-resteasy-reactive")
-    testImplementation("com.github.nbaztec.coveralls-jacoco")
+    implementation("io.quarkus:quarkus-resteasy-reactive"
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.rest-assured:rest-assured")
 }
